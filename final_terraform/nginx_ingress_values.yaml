@@ -1,0 +1,31 @@
+
+controller:
+  updateStrategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxUnavailable: 1
+  hostPort:
+    enabled: true
+  terminationGracePeriodSeconds: 0
+  service:
+    annotations:
+  #    kubernetes.io/ingress.global-static-ip-name: 20.69.127.122
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: TerraformVintila
+  #  type: "LoadBalancer"
+  #  loadBalancerIP: 20.236.28.70
+  watchIngressWithoutClass: true
+#  nodeSelector:
+#    ingress-ready: "true"
+#  tolerations:
+#    - key: "node-role.kubernetes.io/master"
+#      operator: "Equal"
+#      effect: "NoSchedule"
+  publishService:
+    enabled: false
+  extraArgs:
+    publish-status-address: "localhost"
+    #
+#  status:
+#   loadBalancer:
+#     ingress:
+#       - ip: 20.69.127.122
